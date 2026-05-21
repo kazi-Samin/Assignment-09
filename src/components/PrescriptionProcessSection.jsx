@@ -2,10 +2,22 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const SkyBluePrescriptionSection = () => {
+  const router = useRouter();
   const [mounted, setMounted] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const handleSearch = () => {
+
+  if (!searchQuery)
+    return;
+
+  router.push(
+    `/appointments?search=${searchQuery}`
+  );
+
+};
 
   useEffect(() => {
     setMounted(true);
@@ -50,7 +62,7 @@ const SkyBluePrescriptionSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Search Box */}
         <div className="max-w-3xl mx-auto mb-20">
-          <div className="flex items-center gap-4 bg-slate-50 border border-slate-200 rounded-full px-6 py-4 shadow-sm">
+          <div className="flex items-center gap-4 bg-slate-50 border border-slate-200 rounded-full px-6 py-4 shadow-sm ">
             <svg
               className="w-5 h-5 text-emerald-600"
               fill="none"
@@ -74,6 +86,12 @@ const SkyBluePrescriptionSection = () => {
               placeholder="Search doctors or specialties..."
               className="w-full bg-transparent outline-none text-slate-700 placeholder-slate-400"
             />
+            <button
+  onClick={handleSearch}
+  className="px-5 py-2 rounded-full bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition-all"
+>
+  Search
+</button>
           </div>
         </div>
 
