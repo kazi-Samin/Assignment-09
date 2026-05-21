@@ -6,6 +6,7 @@ import React, {
 } from "react";
 import Link from "next/link";
 import { authClient } from "@/lib/auth-client";
+import { useSearchParams } from "next/navigation";
 
 const MyAppointments = () => {
   const [bookings, setBookings] =

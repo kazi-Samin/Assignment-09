@@ -1,18 +1,25 @@
-
 "use client";
 
 import React, { useEffect, useState } from "react";
 import DoctorCard from "@/components/DoctorCard";
+import { useSearchParams } from "next/navigation";
+
 
 const AllAppointments = () => {
   const [doctors, setDoctors] = useState([]);
   const [filteredDoctors, setFilteredDoctors] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const [searchText, setSearchText] = useState("");
+ const [searchText, setSearchText] =
+  useState(search);
   const [priceFilter, setPriceFilter] = useState("all");
 
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
+  const searchParams =
+  useSearchParams();
+
+const search =
+  searchParams.get("search") || "";
 
   useEffect(() => {
     fetch(`${API_URL}/doctors`)
