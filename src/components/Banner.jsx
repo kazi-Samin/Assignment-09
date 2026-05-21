@@ -69,9 +69,9 @@ const Banner = () => {
             </div>
 
             {/* Right Content */}
-            <div className="hidden lg:flex items-center justify-center gap-5 relative">
+            <div className="flex items-center justify-center gap-4 relative mt-12 lg:mt-0">
               {/* Large Card */}
-              <div className="w-64 h-96 rounded-[2rem] overflow-hidden shadow-2xl bg-white p-2">
+             <div className="w-44 h-64 sm:w-56 sm:h-80 lg:w-64 lg:h-96 rounded-[2rem] overflow-hidden shadow-2xl bg-white p-2">
                 <img
                   src="doctor1.jpg"
                   alt="Doctor"
@@ -80,7 +80,7 @@ const Banner = () => {
               </div>
 
               {/* Small Card */}
-              <div className="w-48 h-72 rounded-[2rem] overflow-hidden shadow-xl bg-white p-2 mt-16">
+              <div className="w-32 h-52 sm:w-40 sm:h-64 lg:w-48 lg:h-72 rounded-[2rem] overflow-hidden shadow-xl bg-white p-2 mt-16">
                 <img
                   src="doctor.jpg"
                   alt="Medical Specialist"

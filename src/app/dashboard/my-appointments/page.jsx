@@ -472,6 +472,7 @@ const MyAppointments = () => {
                       }
                       className="px-5 py-2.5 rounded-xl bg-rose-50 text-rose-600 font-semibold hover:bg-rose-100 transition"
                     >
+                      
                       Delete
                     </button>
                   </div>
