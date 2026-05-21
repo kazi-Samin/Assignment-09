@@ -103,7 +103,7 @@ const DoctorDetails = () => {
       appointmentTime: timeSlot,
       timeSlot,
       problem,
-      status: "Pending",
+      status: "Approve",
     };
 
     try {

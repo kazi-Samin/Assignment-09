@@ -27,7 +27,9 @@ const search =
   useState(search);
 
   useEffect(() => {
+    console.log(API_URL);
     fetch(`${API_URL}/doctors`)
+   
       .then((res) => {
         if (!res.ok) {
           throw new Error("Failed to fetch doctors");
