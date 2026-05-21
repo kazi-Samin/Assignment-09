@@ -10,16 +10,19 @@ const AllAppointments = () => {
   const [filteredDoctors, setFilteredDoctors] = useState([]);
   const [loading, setLoading] = useState(true);
 
- const [searchText, setSearchText] =
-  useState(search);
+ 
   const [priceFilter, setPriceFilter] = useState("all");
 
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
-  const searchParams =
+  
+
+const searchParams =
   useSearchParams();
 
 const search =
   searchParams.get("search") || "";
+  const [searchText, setSearchText] =
+  useState(search);
 
   useEffect(() => {
     fetch(`${API_URL}/doctors`)
