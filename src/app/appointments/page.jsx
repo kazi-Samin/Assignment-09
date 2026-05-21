@@ -2,12 +2,12 @@
 export const dynamic =
   "force-dynamic";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,Suspense } from "react";
 import DoctorCard from "@/components/DoctorCard";
 import { useSearchParams } from "next/navigation";
 
 
-const AllAppointments = () => {
+const AppointmentsContent = () => {
   const [doctors, setDoctors] = useState([]);
   const [filteredDoctors, setFilteredDoctors] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -230,4 +230,10 @@ const search =
   );
 };
 
-export default AllAppointments;
+export default function AllAppointments() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <AppointmentsContent />
+    </Suspense>
+  );
+}
