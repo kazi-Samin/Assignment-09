@@ -278,7 +278,7 @@ const MyAppointments = () => {
   }
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 w-full max-w-full overflow-x-hidden">
       {/* Toast */}
       {toast.message && (
         <div className="fixed top-6 right-6 z-50">
@@ -296,12 +296,12 @@ const MyAppointments = () => {
       )}
 
       {/* Header */}
-      <section className="rounded-[32px] bg-gradient-to-r from-slate-900 via-slate-800 to-emerald-900 p-8 md:p-10 text-white">
+      <section className="rounded-3xl bg-gradient-to-r from-slate-900 via-slate-800 to-emerald-900 p-5 sm:p-8 md:p-10 text-white overflow-hidden">
         <span className="inline-block px-4 py-2 rounded-full bg-white/10 border border-white/10 text-xs font-semibold uppercase tracking-widest mb-5">
           Appointment Center
         </span>
 
-        <h1 className="text-4xl md:text-5xl font-bold leading-tight">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight break-words">
           My Appointments
         </h1>
 
@@ -314,8 +314,8 @@ const MyAppointments = () => {
       </section>
 
       {/* Stats */}
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm">
+      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+       <div className="bg-white rounded-3xl border border-slate-200 p-4 sm:p-6 shadow-sm w-full overflow-hidden">
           <p className="text-slate-500 text-sm">
             Total Appointments
           </p>
@@ -401,10 +401,10 @@ const MyAppointments = () => {
                 }
                 className="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm"
               >
-                <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+                <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-5 w-full">
                   {/* Left */}
                   <div className="space-y-3">
-                    <h3 className="text-2xl font-bold text-slate-900">
+                    <h3 className="text-xl sm:text-2xl font-bold text-slate-900 break-words">
                       {booking.doctorName ||
                         "Doctor Appointment"}
                     </h3>
@@ -437,7 +437,7 @@ const MyAppointments = () => {
                   </div>
 
                   {/* Right */}
-                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+                  <div className="flex flex-col sm:flex-row w-full xl:w-auto items-stretch sm:items-center gap-3">
                     <span
                       className={`px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider ${
                         booking.status

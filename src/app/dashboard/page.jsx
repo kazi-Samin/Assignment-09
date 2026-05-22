@@ -145,79 +145,95 @@ export default function DashboardPage() {
   ];
 
   return (
-    <div className="space-y-8">
-      {/* Hero Section */}
-      <section className="rounded-[32px] bg-gradient-to-r from-slate-900 via-slate-800 to-emerald-900 p-8 md:p-10 text-white">
-        <span className="inline-block px-4 py-2 rounded-full bg-white/10 border border-white/10 text-xs font-semibold uppercase tracking-widest mb-5">
-          Dashboard Overview
+  <div className="w-full max-w-full overflow-x-hidden space-y-6 md:space-y-8">
+
+    {/* Hero Section */}
+    <section className="rounded-[24px] md:rounded-[32px] bg-gradient-to-r from-slate-900 via-slate-800 to-emerald-900 p-5 sm:p-6 md:p-10 text-white overflow-hidden">
+
+      <span className="inline-block px-3 py-2 md:px-4 rounded-full bg-white/10 border border-white/10 text-[10px] md:text-xs font-semibold uppercase tracking-widest mb-4 md:mb-5">
+        Dashboard Overview
+      </span>
+
+      <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight break-words">
+        Welcome Back,
+        <span className="block text-emerald-300 mt-2 break-words">
+          {user?.name || "Patient"}
         </span>
+      </h1>
 
-        <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-          Welcome Back,
-          <span className="block text-emerald-300 mt-2">
-            {user?.name || "Patient"}
-          </span>
-        </h1>
+      <p className="mt-4 text-sm md:text-base text-slate-300 max-w-2xl leading-7">
+        Track your appointments, manage your
+        profile, and stay connected with your
+        healthcare journey.
+      </p>
+    </section>
 
-        <p className="mt-4 text-slate-300 max-w-2xl leading-8">
-          Track your appointments, manage your
-          profile, and stay connected with your
-          healthcare journey.
-        </p>
-      </section>
+    {/* Stats */}
+    <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
 
-      {/* Stats Section */}
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {stats.map((stat) => (
+      {stats.map((stat) => (
+
+        <div
+          key={stat.title}
+          className="bg-white border border-slate-200 rounded-3xl p-5 md:p-6 shadow-sm w-full"
+        >
+
           <div
-            key={stat.title}
-            className="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm"
+            className={`w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-gradient-to-r ${stat.color} flex items-center justify-center text-xl md:text-2xl text-white mb-4 md:mb-5`}
           >
-            <div
-              className={`w-14 h-14 rounded-2xl bg-gradient-to-r ${stat.color} flex items-center justify-center text-2xl text-white mb-5`}
-            >
-              {stat.icon}
+            {stat.icon}
+          </div>
+
+          <p className="text-sm text-slate-500">
+            {stat.title}
+          </p>
+
+          <h3 className="text-3xl md:text-4xl font-bold text-slate-900 mt-2">
+            {stat.value}
+          </h3>
+
+        </div>
+      ))}
+    </section>
+
+    {/* Quick Actions */}
+    <section className="bg-white border border-slate-200 rounded-3xl p-5 md:p-6 shadow-sm overflow-hidden">
+
+      <h2 className="text-xl md:text-2xl font-bold text-slate-900 mb-5 md:mb-6">
+        Quick Actions
+      </h2>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+        {actions.map((action) => (
+
+          <Link
+            key={action.title}
+            href={action.href}
+            className="flex items-center justify-between p-4 md:p-5 rounded-2xl bg-slate-50 hover:bg-slate-100 transition w-full"
+          >
+
+            <div className="flex items-center gap-3 min-w-0">
+
+              <span className="text-lg md:text-xl">
+                {action.icon}
+              </span>
+
+              <span className="font-medium text-slate-700 truncate">
+                {action.title}
+              </span>
+
             </div>
 
-            <p className="text-sm text-slate-500">
-              {stat.title}
-            </p>
+            <span className="shrink-0">
+              →
+            </span>
 
-            <h3 className="text-4xl font-bold text-slate-900 mt-2">
-              {stat.value}
-            </h3>
-          </div>
+          </Link>
         ))}
-      </section>
+      </div>
+    </section>
 
-      {/* Quick Actions */}
-      <section className="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm">
-        <h2 className="text-2xl font-bold text-slate-900 mb-6">
-          Quick Actions
-        </h2>
-
-        <div className="grid md:grid-cols-3 gap-4">
-          {actions.map((action) => (
-            <Link
-              key={action.title}
-              href={action.href}
-              className="flex items-center justify-between p-5 rounded-2xl bg-slate-50 hover:bg-slate-100 transition"
-            >
-              <div className="flex items-center gap-3">
-                <span className="text-xl">
-                  {action.icon}
-                </span>
-
-                <span className="font-medium text-slate-700">
-                  {action.title}
-                </span>
-              </div>
-
-              <span>→</span>
-            </Link>
-          ))}
-        </div>
-      </section>
-    </div>
-  );
+  </div>
+);
 }
