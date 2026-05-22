@@ -26,9 +26,10 @@ const ProtectedRoute = ({
       !session
     ) {
 
-      router.push(
-        "/login"
-      );
+      // router.push(
+      //   "/login"
+      // );
+      router.replace("/login");
 
     }
 

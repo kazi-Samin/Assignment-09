@@ -97,8 +97,8 @@ export default function RegisterPage() {
             "/home",
         });
 
-        window.location.href =
-          "/home";
+        // window.location.href =
+        //   "/home";
 
       } catch (err) {
 

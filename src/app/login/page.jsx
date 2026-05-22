@@ -85,8 +85,8 @@ export default function LoginPage() {
             redirectUrl,
         });
 
-        window.location.href =
-          redirectUrl;
+        // window.location.href =
+        //   redirectUrl;
 
       } catch (err) {
 
