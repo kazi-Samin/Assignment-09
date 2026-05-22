@@ -10,11 +10,18 @@ export default function DashboardLayout({
 }) {
   const pathname = usePathname();
 
-  const { data: session, isPending } =
-    authClient.useSession();
-    console.log(session);
+  // const { data: session, isPending } =
+  //   authClient.useSession();
+    // console.log(session);
 // console.log(isPending);
+const session = {
+  user: {
+    name: "Patient",
+    image: "",
+  },
+};
 
+const isPending = false;
   const user = session?.user;
 
   const getInitial = (name) =>
