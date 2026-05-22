@@ -2,7 +2,11 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { authClient } from "@/lib/auth-client";
+// import { authClient } from "@/lib/auth-client";
+import {
+  loginUser,
+  getCurrentUser,
+} from "@/lib/auth-client";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -13,9 +17,24 @@ export default function LoginPage() {
     useState(false);
   const [redirectUrl, setRedirectUrl] =
     useState("/home");
+    useEffect(() => {
+  async function checkUser() {
+    const user =
+      await getCurrentUser();
 
-  const { data: session, isPending } =
-    authClient.useSession();
+    setSession(user);
+
+    setIsPending(false);
+  }
+
+  checkUser();
+}, []);
+
+    const [session, setSession] =
+  useState(null);
+
+const [isPending, setIsPending] =
+  useState(true);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -42,21 +61,36 @@ export default function LoginPage() {
     setLoading(true);
 
     try {
+      // const result =
+      //   await authClient.signIn.email({
+      //     email,
+      //     password,
+      //   });
       const result =
-        await authClient.signIn.email({
-          email,
-          password,
-        });
+  await loginUser(
+    email,
+    password
+  );
 
-      if (result.error) {
-        setError(
-          result.error.message ||
-            "Invalid email or password."
-        );
-        setLoading(false);
-        return;
-      }
+      // if (result.error) {
+      //   setError(
+      //     result.error.message ||
+      //       "Invalid email or password."
+      //   );
+      //   setLoading(false);
+      //   return;
+      // }
+if (!result.success) {
 
+  setError(
+    result.message ||
+      "Invalid email or password."
+  );
+
+  setLoading(false);
+
+  return;
+}
       window.location.href = redirectUrl;
     } catch (err) {
       console.error("Login Error:", err);

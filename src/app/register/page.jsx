@@ -2,7 +2,11 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { authClient } from "@/lib/auth-client";
+// import { authClient } from "@/lib/auth-client";
+import {
+  registerUser,
+  getCurrentUser,
+} from "@/lib/auth-client";
 
 export default function RegisterPage() {
   const [name, setName] = useState("");
@@ -11,10 +15,27 @@ export default function RegisterPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  useEffect(() => {
+  async function checkUser() {
 
-  const { data: session, isPending } =
-    authClient.useSession();
+    const user =
+      await getCurrentUser();
 
+    setSession(user);
+
+    setIsPending(false);
+  }
+
+  checkUser();
+}, []);
+
+  // const { data: session, isPending } =
+  //   authClient.useSession();
+const [session, setSession] =
+  useState(null);
+
+const [isPending, setIsPending] =
+  useState(true);
   // Password Validation
   const hasUppercase = /[A-Z]/.test(password);
   const hasLowercase = /[a-z]/.test(password);
@@ -22,7 +43,8 @@ export default function RegisterPage() {
 
   useEffect(() => {
     if (!isPending && session) {
-      window.location.href = "/home";
+      // window.location.href = "/home";
+      window.location.href = "/login";
     }
   }, [session, isPending]);
 
@@ -44,24 +66,42 @@ export default function RegisterPage() {
     setLoading(true);
 
     try {
+      // const result =
+      //   await authClient.signUp.email({
+      //     name,
+      //     email,
+      //     password,
+      //     image: photoUrl || undefined,
+      //   });
       const result =
-        await authClient.signUp.email({
-          name,
-          email,
-          password,
-          image: photoUrl || undefined,
-        });
+  await registerUser(
+    name,
+    email,
+    password,
+    photoUrl
+  );
 
-      if (result.error) {
-        setError(
-          result.error.message ||
-            "Registration failed."
-        );
-        setLoading(false);
-        return;
-      }
+      // if (result.error) {
+      //   setError(
+      //     result.error.message ||
+      //       "Registration failed."
+      //   );
+      //   setLoading(false);
+      //   return;
+      // }
+if (!result.success) {
 
-      window.location.href = "/home";
+  setError(
+    result.message ||
+      "Registration failed."
+  );
+
+  setLoading(false);
+
+  return;
+}
+//       window.location.href = "/home";
+window.location.href = "/login";
     } catch (err) {
       console.error("Register Error:", err);
       setError(
