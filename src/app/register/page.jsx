@@ -49,7 +49,7 @@ export default function RegisterPage() {
     ) {
 
       window.location.href =
-        "/home";
+  "https://assignment-09-kappa.vercel.app/home";
     }
 
   }, [
@@ -92,9 +92,8 @@ export default function RegisterPage() {
           image:
             photoUrl ||
             undefined,
-
-          callbackURL:
-            "/home",
+callbackURL:
+"https://assignment-09-kappa.vercel.app/home",
         });
 
         // window.location.href =
@@ -124,7 +123,7 @@ export default function RegisterPage() {
 
           provider: "google",
 
-          callbackURL:"https://assignment-09-kappa.vercel.app"
+          callbackURL:"https://assignment-09-kappa.vercel.app/home"
             
         });
 
