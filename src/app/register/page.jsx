@@ -124,8 +124,8 @@ export default function RegisterPage() {
 
           provider: "google",
 
-          callbackURL:
-            "/home",
+          callbackURL:"https://assignment-09-kappa.vercel.app"
+            
         });
 
       } catch (err) {

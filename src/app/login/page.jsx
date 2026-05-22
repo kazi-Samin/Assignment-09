@@ -112,7 +112,7 @@ export default function LoginPage() {
 
           provider: "google",
 
-          callbackURL:
+          callbackURL:"https://assignment-09-kappa.vercel.app",
             redirectUrl,
         });
 
