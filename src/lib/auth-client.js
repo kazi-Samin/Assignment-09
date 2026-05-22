@@ -1,91 +1,37 @@
 
+
 // "use client";
 
-// const API_URL =
-//   process.env.NEXT_PUBLIC_API_URL;
+// import { createAuthClient } from "better-auth/react";
 
-// export async function loginUser(
-//   email,
-//   password
-// ) {
-//   const response = await fetch(
-//     `${API_URL}/login`,
-//     {
-//       method: "POST",
+// export const authClient =
+//   createAuthClient({
+//     baseURL:
+//       process.env.NEXT_PUBLIC_API_URL,
 
-//       headers: {
-//         "Content-Type":
-//           "application/json",
-//       },
-
+//     fetchOptions: {
 //       credentials: "include",
+//     },
+//   });
 
-//       body: JSON.stringify({
-//         email,
-//         password,
-//       }),
-//     }
-//   );
-
-//   return response.json();
-// }
-
-// export async function registerUser(
-//   userData
-// ) {
-//   const response = await fetch(
-//     `${API_URL}/register`,
-//     {
-//       method: "POST",
-
-//       headers: {
-//         "Content-Type":
-//           "application/json",
-//       },
-
-//       credentials: "include",
-
-//       body: JSON.stringify(
-//         userData
-//       ),
-//     }
-//   );
-
-//   return response.json();
-// }
-
-// export async function logoutUser() {
-//   const response = await fetch(
-//     `${API_URL}/logout`,
-//     {
-//       method: "POST",
-
-//       credentials: "include",
-//     }
-//   );
-
-//   return response.json();
-// }
-
-// export async function getCurrentUser() {
-//   const response = await fetch(
-//     `${API_URL}/me`,
-//     {
-//       credentials: "include",
-//     }
-//   );
-
-//   return response.json();
-// }
-
+// export const {
+//   signIn,
+//   signUp,
+//   signOut,
+//   useSession,
+// } = authClient;
 "use client";
 
-import { createAuthClient } from "better-auth/react";
+import {
+  createAuthClient,
+} from "better-auth/react";
 
 export const authClient =
   createAuthClient({
+
     baseURL:
-      process.env.NEXT_PUBLIC_API_URL,
+      process.env
+        .NEXT_PUBLIC_API_URL,
 
     fetchOptions: {
       credentials: "include",
