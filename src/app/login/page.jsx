@@ -22,7 +22,7 @@ export default function LoginPage() {
     useState(false);
 
   const [redirectUrl, setRedirectUrl] =
-    useState("/home");
+    useState("https://assignment-09-kappa.vercel.app/home");
 
   const {
     data: session,
@@ -42,7 +42,7 @@ export default function LoginPage() {
 
       setRedirectUrl(
         params.get("redirect") ||
-          "/home"
+          "https://assignment-09-kappa.vercel.app/home"
       );
     }
   }, []);
@@ -112,8 +112,8 @@ export default function LoginPage() {
 
           provider: "google",
 
-          callbackURL:"https://assignment-09-kappa.vercel.app",
-            redirectUrl,
+          callbackURL:"https://assignment-09-kappa.vercel.app/home",
+            
         });
 
       } catch (err) {
