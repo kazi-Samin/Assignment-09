@@ -142,7 +142,7 @@ export default function LoginPage() {
     );
   }
 
-  if (session) return null;
+  // if (session) return null;
 
   return (
     <section className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-emerald-50 px-4 py-8 md:py-12 flex items-center justify-center">

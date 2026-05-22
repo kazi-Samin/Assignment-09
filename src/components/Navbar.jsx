@@ -24,7 +24,8 @@ export default function Navbar() {
     try {
       await authClient.signOut();
       router.refresh();
-      window.location.href = "/home";
+      // window.location.href = "/home";
+      router.push("/home");
     } catch (err) {
       console.error("Logout failed:", err);
     }
