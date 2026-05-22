@@ -3,10 +3,10 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { authClient } from "@/lib/auth-client";
-import {
-  loginUser,
-  getCurrentUser,
-} from "@/lib/auth-client";
+// import {
+//   loginUser,
+//   getCurrentUser,
+// } from "@/lib/auth-client";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -66,11 +66,12 @@ const [isPending, setIsPending] =
       //     email,
       //     password,
       //   });
-      const result =
-  await loginUser(
-    email,
-    password
-  );
+      await authClient.signIn.email({
+  email,
+  password,
+
+  callbackURL: "/home",
+});
 
       // if (result.error) {
       //   setError(

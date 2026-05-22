@@ -3,10 +3,10 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { authClient } from "@/lib/auth-client";
-import {
-  registerUser,
-  getCurrentUser,
-} from "@/lib/auth-client";
+// import {
+//   registerUser,
+//   getCurrentUser,
+// } from "@/lib/auth-client";
 
 export default function RegisterPage() {
   const [name, setName] = useState("");
@@ -73,13 +73,13 @@ const [isPending, setIsPending] =
       //     password,
       //     image: photoUrl || undefined,
       //   });
-      const result =
-  await registerUser(
-    name,
-    email,
-    password,
-    photoUrl
-  );
+      await authClient.signUp.email({
+  name,
+  email,
+  password,
+  image,
+  callbackURL: "/home",
+});
 
       // if (result.error) {
       //   setError(
