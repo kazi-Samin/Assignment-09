@@ -17,25 +17,26 @@ export default function LoginPage() {
     useState(false);
   const [redirectUrl, setRedirectUrl] =
     useState("/home");
-    useEffect(() => {
-  async function checkUser() {
-    const user =
-      await getCurrentUser();
+//     useEffect(() => {
+//   async function checkUser() {
+//     const user =
+//       await getCurrentUser();
 
-    setSession(user);
+//     setSession(user);
 
-    setIsPending(false);
-  }
+//     setIsPending(false);
+//   }
 
-  checkUser();
-}, []);
+//   checkUser();
+// }, []);
 
-    const [session, setSession] =
-  useState(null);
+//     const [session, setSession] =
+//   useState(null);
 
-const [isPending, setIsPending] =
-  useState(true);
-
+// const [isPending, setIsPending] =
+//   useState(true);
+// if (!isPending && session)
+  
   useEffect(() => {
     if (typeof window !== "undefined") {
       const params = new URLSearchParams(
@@ -49,7 +50,10 @@ const [isPending, setIsPending] =
   }, []);
 
   useEffect(() => {
-    if (!isPending && session) {
+    const {
+  data: session,
+  isPending,
+} = authClient.useSession(); {
       window.location.href = redirectUrl;
     }
   }, [session, isPending, redirectUrl]);
@@ -81,17 +85,17 @@ const [isPending, setIsPending] =
       //   setLoading(false);
       //   return;
       // }
-if (!result.success) {
+// if (!result.success) {
 
-  setError(
-    result.message ||
-      "Invalid email or password."
-  );
+//   setError(
+//     result.message ||
+//       "Invalid email or password."
+//   );
 
-  setLoading(false);
+//   setLoading(false);
 
-  return;
-}
+//   return;
+// }
       window.location.href = redirectUrl;
     } catch (err) {
       console.error("Login Error:", err);

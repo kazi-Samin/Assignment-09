@@ -12,6 +12,8 @@ export default function DashboardLayout({
 
   const { data: session, isPending } =
     authClient.useSession();
+    console.log(session);
+console.log(isPending);
 
   const user = session?.user;
 

@@ -15,27 +15,27 @@ export default function RegisterPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  useEffect(() => {
-  async function checkUser() {
+//   useEffect(() => {
+//   async function checkUser() {
 
-    const user =
-      await getCurrentUser();
+//     const user =
+//       await getCurrentUser();
 
-    setSession(user);
+//     setSession(user);
 
-    setIsPending(false);
-  }
+//     setIsPending(false);
+//   }
 
-  checkUser();
-}, []);
+//   checkUser();
+// }, []);
 
-  // const { data: session, isPending } =
-  //   authClient.useSession();
-const [session, setSession] =
-  useState(null);
+  const { data: session, isPending } =
+    authClient.useSession();
+// const [session, setSession] =
+//   useState(null);
 
-const [isPending, setIsPending] =
-  useState(true);
+// const [isPending, setIsPending] =
+//   useState(true);
   // Password Validation
   const hasUppercase = /[A-Z]/.test(password);
   const hasLowercase = /[a-z]/.test(password);
@@ -73,14 +73,22 @@ const [isPending, setIsPending] =
       //     password,
       //     image: photoUrl || undefined,
       //   });
-      await authClient.signUp.email({
+  //     const result =
+  // await registerUser(
+  //   name,
+  //   email,
+  //   password,
+  //   photoUrl
+  // );
+await authClient.signUp.email({
   name,
   email,
   password,
-  image,
+  image:
+    photoUrl || undefined,
+
   callbackURL: "/home",
 });
-
       // if (result.error) {
       //   setError(
       //     result.error.message ||
